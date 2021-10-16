@@ -12,6 +12,6 @@ app.get('/contactForm', async (req, res) => {
     let subscribers = await connection.asyncquery('SELECT * FROM telegramBotSubs');
     console.log(subscribers)
     for (let i = 0; i < subscribers.length; i++) {
-        bot.sendMessage(subscribers[0].tb_chatID, `*✉️ New Mail*\n\n*${subject}* \n\n👤 From ${name}\n⏰ ${time} \n\n${message}`, opts);
+        bot.sendMessage(subscribers[0].tb_chatID, `*✉️ New Mail*\n\n*${subject}* \n\n👤 From ${name}\n⏰ ${time}\n👤${mail} \n\n${message}`, opts);
     }
 })
