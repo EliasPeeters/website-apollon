@@ -16,23 +16,16 @@ app.use(bodyParser.json());
 const token = credentials.telegram.token;
 bot = new TelegramBot(token, {polling: true});
 
-
-bot.onText(/\/unsubscribe/, (msg) => {
-    const chatId = msg.chat.id;
-    subscribers.push(chatId);
-    console.log(subscribers)
-    // send a message to the chat acknowledging receipt of their message
-    bot.sendMessage(chatId, 'Subscribed to morning summary');
-});
-
-
 // Routes
 let status = require('./routes/status');
 let contactForm = require('./routes/contactForm');
 
 //botRoutes
 let morningSummary = require('./botRoutes/morningSummary');
+let help = require('./botRoutes/help');
 let subscribe = require('./botRoutes/subscribe');
+let unsubscribe = require('./botRoutes/unsubscribe');
+let subscribeStatus = require('./botRoutes/subscribeStatus');
 
 let port = 8089;
 app.listen(port, () => {
