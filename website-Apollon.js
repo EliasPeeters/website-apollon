@@ -4,6 +4,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const bodyParser = require('body-parser');
 const getCredentials = require('./getCredentials');
 const mysqlSetup = require('./mysqlSetup');
+const summary = require('./botRoutes/morningSummary');
 
 
 credentials = getCredentials.getCredentials();
@@ -32,3 +33,5 @@ let port = 8089;
 app.listen(port, () => {
     console.log(`Running on ${8089}`)
 })
+
+summary.sendMessageToAllSubs('🖥 Apollon started...')

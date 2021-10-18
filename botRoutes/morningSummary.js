@@ -33,10 +33,22 @@ for (i = 0; i < summaryTimes.length; i++) {
 
 async function sendSummary(hour, minute) {
     console.log(`Job runs every day at ${hour}:${minute}`);
+    sendMessageToAllSubs(`This is your summary at ${hour}:${minute}`, {})
+    
+}
+
+async function sendMessageToAllSubs(message, opt) {
     let subscribers = await connection.asyncquery('SELECT * FROM telegramBotSubs');
     for (let i = 0; i < subscribers.length; i++) {
-        bot.sendMessage(subscribers[i].tb_chatID, `This is your summary at ${hour}:${minute}`);
+        bot.sendMessage(subscribers[i].tb_chatID, message, opt);
     }
 }
 
-module.exports = {sendSummary}
+async function sendSummaryNow() {
+    const d = new Date();
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    await summary.sendSummary(hour, minute);
+}
+
+module.exports = {sendSummary, sendSummaryNow, sendMessageToAllSubs}
