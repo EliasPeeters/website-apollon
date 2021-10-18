@@ -19,6 +19,7 @@ bot = new TelegramBot(token, {polling: true});
 // Routes
 let status = require('./routes/status');
 let contactForm = require('./routes/contactForm');
+let testMessage = require('./routes/testMessage');
 
 //botRoutes
 let morningSummary = require('./botRoutes/morningSummary');
