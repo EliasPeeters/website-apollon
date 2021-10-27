@@ -33,7 +33,7 @@ for (i = 0; i < summaryTimes.length; i++) {
 
 async function sendSummary(hour, minute) {
     console.log(`Job runs every day at ${hour}:${minute}`);
-    sendMessageToAllSubs(`This is your summary at ${hour}:${minute}`, {})
+    sendMessageToAllSubs(`This is your summary at ${hour}:${minute}0`, {})
     
 }
 

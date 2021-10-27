@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const getCredentials = require('./getCredentials');
 const mysqlSetup = require('./mysqlSetup');
 const summary = require('./botRoutes/morningSummary');
+const nodemailer = require('nodemailer');
 
 
 credentials = getCredentials.getCredentials();
